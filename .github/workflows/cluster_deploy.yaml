@@ -11,7 +11,7 @@ jobs:
       - name: Install Kind and Create Cluster
         run: |
           set -o errexit
-          curl -o kind -L https://kind.sigs.k8s.io/dl/v0.11.1/kind-linux-amd64
+          curl -o kind -L https://kind.sigs.k8s.io/dl/v0.11.1/kind-linux-arm64
           mkdir -p /opt/bin;
           install kind /opt/bin/
           /opt/bin/kind create cluster --image "kindest/node:v1.18.19"
@@ -23,7 +23,7 @@ jobs:
         run: |
           set -x
           mkdir -p /opt/bin \
-          	&& curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
+          	&& curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/arm64/kubectl" \
           	&& cp kubectl /opt/bin  \
           	&& curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash \
           	&& cp kustomize /opt/bin \
